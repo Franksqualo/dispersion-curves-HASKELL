@@ -1,18 +1,18 @@
-# dispersion-curves-HASKELL
+# Dispersion-curves-HASKELL
 
-# To launch the functions follow the steps below (the help of the functions will also help):
+### To launch the functions follow the steps below (the help of the functions will also help):
 
-## Set:
-# n     = number of layers
-# Vp,Vs = Velocities as numpy array
-# rho   = density as an array
-# D     = depth of each interface as an array
-# freqmax = maximum frequency
+##### Set:
+n     = number of layers
+Vp,Vs = Velocities as numpy array
+rho   = density as an array
+D     = depth of each interface as an array
+freqmax = maximum frequency
 
-# Once the initialization parameters are fixed, use the "dispersion_curves_gen" to generate the curves.
-# ________________ #
-# Here an exemple:
-# ________________ #
+##### Once the initialization parameters are fixed, use the "dispersion_curves_gen" to generate the curves.
+ ________________
+ Here an exemple:
+ ________________ 
 
 import numpy as np
 from funzione_heskell import *
