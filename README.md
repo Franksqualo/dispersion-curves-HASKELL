@@ -3,7 +3,7 @@
 ### To launch the functions follow the steps below (the help of the functions will also help):
 
 ##### Set:
-n     = number of layers\\
+n     = number of layers //
 Vp,Vs = Velocities as numpy array
 rho   = density as an array
 D     = depth of each interface as an array
