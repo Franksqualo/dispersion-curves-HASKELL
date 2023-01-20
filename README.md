@@ -13,7 +13,7 @@ D       = depth of each interface as an array
 
 freqmax = maximum frequency 
 ##### To set the maximum frequency if unknown:
-# freqmax=min(Vs)/(depth[len(depth)-2]-depth[len(depth)-3]) 
+freqmax=min(Vs)/(depth[len(depth)-2]-depth[len(depth)-3]) 
 
 
 ##### Once the initialization parameters are fixed, use the "dispersion_curves_gen" to generate the curves.
