@@ -2,6 +2,12 @@
 
 *NB\\ The code is working in progress for the fluid layer case*
 
+Function to calculate dispersion curves for a 1D medium, with vertical heterogeneity.
+The method adopthed is the Haskell method.
+We suppose that: the medium is is totally elastic, monodimensional and the waves are plane waves.
+NB || The operator must take in account that the Haskell method assume that the curvature of the wavefronts
+is negligible, so that the distance source-receiver must be large enough or an higher frequency have to be chosen.
+
 To launch the functions follow the steps below (the help of the functions will also help):
 
 ##### Set:
