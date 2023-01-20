@@ -9,11 +9,11 @@ Vp,Vs   = Velocities as numpy array
 
 rho     = density as an array
 
-D       = depth of each interface as an array
+D       = depth of each interface as an array, must be in the form D=[2,3,0].The last index represents the top of the model.
 
 freqmax = maximum frequency 
 ##### To set the maximum frequency if unknown:
-freqmax=min(Vs)/(depth[len(depth)-2]-depth[len(depth)-3]) 
+freqmax=min(Vs)/(D[len(D)-2]-depth[len(D)-3]) 
 
 
 ##### Once the initialization parameters are fixed, use the "dispersion_curves_gen" to generate the curves.
