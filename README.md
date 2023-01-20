@@ -11,7 +11,9 @@ rho     = density as an array
 
 D       = depth of each interface as an array
 
-freqmax = maximum frequency
+freqmax = maximum frequency 
+##### To set the maximum frequency if unknown:
+# freqmax=min(Vs)/(depth[len(depth)-2]-depth[len(depth)-3]) 
 
 
 ##### Once the initialization parameters are fixed, use the "dispersion_curves_gen" to generate the curves.
@@ -43,11 +45,11 @@ D=np.array(D)
 
 fmax=50
 
-dir_principale='C:\\Users\\Desktop\\dispersion curves' #where to find the functions
+dir_principale=  ............. #where to find the functions
 
-directoy_vphase='C:\\Users\\Desktop\\dispersion curves\\directoy_vphase'
+directoy_vphase= ............. #where to find the vphase array
 
-directory_freq='C:\\Users\\Desktop\\dispersion curves\\directory_freq'
+directory_freq=  ............. #where to find the frequency array
 
 nomefilef='f1'
 
