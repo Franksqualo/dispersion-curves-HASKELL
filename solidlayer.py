@@ -21,9 +21,9 @@ def solidlayer(n,k,d,rho,vp,vs,vels,TH,freqmax):
     # calcolo della solid layer matrix
     c0=0.01
     dc=0.01
-    A=np.zeros((n,4,4),complex) #3D: dim, righe, colonne
+    A=np.zeros((n,4,4),complex) 
 ######################################
-    c=np.zeros((2,1))             #2D: righe, colonne
+    c=np.zeros((2,1))             
     HSK=np.zeros((len(c),len(k)))
     nn=150
     eps=0.000001
@@ -37,7 +37,7 @@ def solidlayer(n,k,d,rho,vp,vs,vels,TH,freqmax):
         for tt in range (0,nn):
             for l in range (0,len(c)):
                 if c[l] > vp[n]:
-                    rpn=sqrt(((c[l]/vp[n])**2)-1)  # used for the calculation of elastic wave equation for the P wave and finding the transmission and reflection coefficients between layers                             
+                    rpn=sqrt(((c[l]/vp[n])**2)-1)                               
                 else:
                     rpn=-1j*(cmath.sqrt(1-(c[l]/vp[n])**2))                     
                 if c[l] > vs[n]:
@@ -57,25 +57,23 @@ def solidlayer(n,k,d,rho,vp,vs,vels,TH,freqmax):
                              
                 for m in range (0,n):
                     if c[l] > vp[m]:
-                        rp=sqrt(((c[l]/vp[m])**2)-1) #è qui che da l'errore, c[l] è infinito
+                        rp=sqrt(((c[l]/vp[m])**2)-1) 
                                
                     else:
-                        rp=-1j*(cmath.sqrt(1-(c[l]/vp[m])**2)) #polar coordinates
+                        rp=-1j*(cmath.sqrt(1-(c[l]/vp[m])**2)) 
                         
                         #________________________________________________
 
                     if c[l] > vs[m]:
-                        rs=sqrt(((c[l]/vs[m])**2)-1)    #rs diventa infinito
+                        rs=sqrt(((c[l]/vs[m])**2)-1)    
                                
                     else:                       
                         rs=-1j*(cmath.sqrt(1-(c[l]/vs[m])**2))  
                        
                         
                     g=2*((vs[m]/c[l])**2)   
-                    
-                    
-                    
-                    P=k[h]*rp*d[m]          # P va ad infinito all'iterazione n, da qui l'err ###### erore parte da rp
+ 
+                    P=k[h]*rp*d[m]          
                     Q=k[h]*rs*d[m]          
                     
                     cosenoP=(cmath.cos(P))   
@@ -84,8 +82,7 @@ def solidlayer(n,k,d,rho,vp,vs,vels,TH,freqmax):
                     cosenoQ=cosenoQ.real                                           
                     senoP=cmath.sin(P)                                              
                     senoQ=cmath.sin(Q)                                              
-                    
-                    # togli le variabili aggiunte senoPQ e cosenoPQ
+
                     #______________________________________________________________________________________________                
                     A[m,0,0]=((g*cosenoP))-((g-1)*cosenoQ)                #.real                           
                     A[m,0,1]=1j*((((g-1)/rp)*senoP)+(g*rs*senoQ)) #ok     #img                  
@@ -136,27 +133,18 @@ def solidlayer(n,k,d,rho,vp,vs,vels,TH,freqmax):
                 N=(a2*AA[0,0]+b2*AA[1,0]+c2*AA[2,0]+d2*AA[3,0]).real
                 HSK[l,h]=(K*N)-((L*M).real)
                 
-            f0=HSK[0,h]                       #a una certa f0 e f1 diventano uguali - err
-            f1=HSK[1,h]                       #su matlab non si uguagliano mai
-            ##################
-            
-                
+            f0=HSK[0,h]                       
+            f1=HSK[1,h]                       
             ##################
             cn=c[1]-(f1*(c[1]-c[0])/(f1-f0))
             c[0]=c[1]    
             c[1]=cn
-            # print('f0=',f0,'f1=',f1,'H',h) # gli f hanno stesso ordine di grandezza di MATLAB ma valori diversi man mano che aumentano le iter
-            
-                
-                
+ 
             if (abs(c[0]-c[1])<eps):
                 
                 croot.append(cn)
                 kroot.append(k[h])
-                T.append((2*pi*TH)/(k[h]*vels*cn)) #uso T come una lista, non cambia per quello che devo fare, restituisce comunque float
-                
-                #problema, in quanto h supera la lunghezza di T ( se T è lungo 43, andrà da 0 a 42 e la posizione 43 non esisterà)
-                #problema che si ripete ogni volta che non entro nell'if
+                T.append((2*pi*TH)/(k[h]*vels*cn)) 
                 Tlastsampl= len(T)-1 #uso per risolvere il problema
                 f=1/T[Tlastsampl] 
                 break
@@ -167,5 +155,4 @@ def solidlayer(n,k,d,rho,vp,vs,vels,TH,freqmax):
     kroot=np.array(kroot)
     T=np.array(T)
     
-
     return(T,croot)
