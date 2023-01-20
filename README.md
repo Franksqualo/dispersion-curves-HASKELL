@@ -1,5 +1,7 @@
 # Dispersion-curves-HASKELL
 
+*NB\\ The code is working in progress for the fluid layer case*
+
 To launch the functions follow the steps below (the help of the functions will also help):
 
 ##### Set:
